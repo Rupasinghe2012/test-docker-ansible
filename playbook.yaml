@@ -4,7 +4,7 @@
   tasks:
     - name: Add the Apt Mirror Repo
       apt_repository:
-          repo: deb {{ hostvars[groups][global][0].apt_mirror }}
+          repo: deb {{ hostvars[groups][global][1].apt_mirror }}
           state: present
     - name: Set timezone
       timezone:
