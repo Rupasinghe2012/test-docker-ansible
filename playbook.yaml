@@ -1,7 +1,9 @@
 
-- hosts: all
+- hosts: alpha
   become: true
   tasks:
+    - debug:
+        var=hostvars[inventory_hostname][apt_mirror]
     - name: Add the Apt Mirror Repo
       apt_repository:
           repo: deb {{ hostvars[item].apt_mirror }}
