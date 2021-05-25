@@ -1,9 +1,7 @@
 version: "3.9"
 services:
-  conti-test:
-    build: .
   alpha:
-    image: "conti-test"
+    build: .
     hostname: alpha
     networks:
         conti-test:
@@ -11,7 +9,7 @@ services:
     ports:
         - "22:22"
   bravo:
-    image: "conti-test"
+    build: .
     hostname: bravo
     networks:
         conti-test:
@@ -23,7 +21,7 @@ services:
     depends_on:
         - alpha
   charlie:
-    image: "conti-test"
+    build: .
     hostname: charlie
     environment:
       - CONTI_ENV=$${CONTI_ENV:-default}
