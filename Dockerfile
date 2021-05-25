@@ -13,10 +13,10 @@ ADD ./keys/id_rsa /home/ansible/.ssh/id_rsa
 ADD ./keys/id_rsa.pub /home/ansible/.ssh/id_rsa.pub
 RUN  chmod 600 /home/ansible/.ssh/id_rsa && \
      chmod 600 /ansible/.ssh/id_rsa.pub && \
-     chown -R ansible.ansible /ansible/.ssh/*
+
 
 # Authorize SSH Host
-RUN cat /home/ansible/.ssh/id_rsa.pub > /ansible/.ssh/known_hosts
+RUN cat .ssh/id_rsa.pub > /home/ansible/.ssh/known_hosts
 
 
 RUN  service ssh start
