@@ -2,15 +2,20 @@ version: "3.9"
 services:
   alpha:
     build: .
+    image: conti-test
     container_name: alpha
     hostname: alpha
+    tty: true
+    stdin_open: true
     networks:
         conti-test:
           ipv4_address: 172.16.100.140
   bravo:
-    build: .
+    image: conti-test
     container_name: bravo
     hostname: bravo
+    tty: true
+    stdin_open: true
     networks:
         conti-test:
           ipv4_address: 172.16.100.141
@@ -22,9 +27,11 @@ services:
     depends_on:
         - alpha
   charlie:
-    build: .
+    image: conti-test
     container_name: charlie
     hostname: charlie
+    tty: true
+    stdin_open: true
     environment:
       - CONTI_ENV=$${CONTI_ENV:-default}
       - CONTI_DB_NAME=$${CONTI_DB_NAME?You must specify CONTI_DB_NAME in the environment}
