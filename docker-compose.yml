@@ -14,6 +14,7 @@ services:
     image: conti-test
     container_name: bravo
     hostname: bravo
+    command: sh -c './wait-for alpha:22'
     tty: true
     stdin_open: true
     networks:
@@ -30,6 +31,7 @@ services:
     image: conti-test
     container_name: charlie
     hostname: charlie
+    command: sh -c './wait-for bravo:22'
     tty: true
     stdin_open: true
     environment:
