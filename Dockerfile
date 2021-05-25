@@ -21,8 +21,7 @@ RUN  chmod 600 /home/ansible/.ssh/id_rsa && \
 RUN cat /home/ansible/.ssh/id_rsa.pub > /home/ansible/.ssh/known_hosts
 
 RUN chown -R ansible:ansible /home/ansible/ && \
-  echo "ansible ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
-  touch /etc/sysconfig/network
+  echo "ansible ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 EXPOSE 22
 ENTRYPOINT service ssh restart && bash
