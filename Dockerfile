@@ -6,6 +6,7 @@ RUN apt-get update && \
     apt-get install -y \
         openssh-server
 
+COPY ssh_config /home/ansible/.ssh/config
 RUN mkdir -p /home/ansible/.ssh && \
     chmod 0700 /home/ansible/.ssh
 # Add the keys and set permissions
@@ -18,6 +19,10 @@ RUN  chmod 600 /home/ansible/.ssh/id_rsa && \
 
 # Authorize SSH Host
 RUN cat /home/ansible/.ssh/id_rsa.pub > /home/ansible/.ssh/known_hosts
+
+RUN chown -R ansible:ansible /home/ansible/ && \
+  echo "ansible ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
+  touch /etc/sysconfig/network
 
 EXPOSE 22
 ENTRYPOINT service ssh restart && bash
