@@ -6,11 +6,11 @@
       apt_repository:
           repo: deb {{ hostvars[item].apt_mirror }}
           state: present
-      loop: "{{ groups.global }}"
+      loop: "{{ groups.all }}"
     - name: Set timezone
       timezone:
         name: "{{ hostvars[item].timezone }}"
-      loop: "{{ groups.global }}"
+      loop: "{{ groups.all }}"
 - hosts: west
   become: true
   tasks:
