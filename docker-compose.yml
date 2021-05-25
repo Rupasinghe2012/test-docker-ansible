@@ -12,8 +12,11 @@ services:
     networks:
         conti-test:
           ipv4_address: 172.16.100.141
-    cpu_percent: 10
-    mem_limit: 4096
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 4Gi
     depends_on:
         - alpha
   charlie:
