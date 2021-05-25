@@ -1,0 +1,22 @@
+
+- hosts: global
+  become: true
+  tasks:
+    - name: Add the Apt Mirror Repo
+      apt_repository:
+          repo: deb {{ hostvars['global'].apt_mirror }}
+          state: present
+    - name: Set timezone
+      timezone:
+        name: "{{ hostvars['global'].timezone }}"
+- hosts: west
+  become: true
+  tasks:
+    - name: Adding the Welcome message to WEST
+      shell: sudo sh -c 'echo "Once upon a time in the west." > /etc/motd'
+
+- hosts: east
+  become: true
+  tasks:
+    - name: Adding the Welcome message to EAST
+      shell: sudo sh -c 'echo "Eastern promises." > /etc/motd'
