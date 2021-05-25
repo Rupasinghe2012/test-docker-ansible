@@ -33,7 +33,7 @@ services:
     tty: true
     stdin_open: true
     environment:
-      - CONTI_ENV=${CONTI_ENV:-prod}
+      - CONTI_ENV=${CONTI_ENV}
       - CONTI_DB_NAME=${CONTI_DB_NAME?You must specify CONTI_DB_NAME in the environment}
     ulimits:
         nofile:
