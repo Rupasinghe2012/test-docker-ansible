@@ -1,4 +1,4 @@
-version: "1.29.1"
+version: "3.9"
 services:
   conti-test:
     build: .
@@ -26,6 +26,9 @@ services:
     image: "conti-test"
     hostname: charlie
     env_file: .env
+    environment:
+      - ${CONTI_ENV-default}
+      - ${CONTI_DB_NAME?You must specify CONTI_DB_NAME in the environment}
     ulimits:
         nofile:
           soft: 1048576

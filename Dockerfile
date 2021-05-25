@@ -1,6 +1,7 @@
 FROM ubuntu:20.04
 RUN useradd -rm -s /bin/bash  -G sudo -u 71000 ansible
 RUN groupmod -g 71000 ansible
+USER ansible
 
 RUN apt-get update && \
     apt-get install -y \
