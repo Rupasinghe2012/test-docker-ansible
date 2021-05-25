@@ -11,14 +11,14 @@ RUN mkdir -p /home/ansible/.ssh && \
 # Add the keys and set permissions
 ADD ./keys/id_rsa /home/ansible/.ssh/id_rsa
 ADD ./keys/id_rsa.pub /home/ansible/.ssh/id_rsa.pub
-RUN sudo chmod 600 /home/ansible/.ssh/id_rsa && \
-    sudo chmod 600 /ansible/.ssh/id_rsa.pub && \
-    sudo chown -R ansible.ansible /ansible/.ssh/*
+RUN  chmod 600 /home/ansible/.ssh/id_rsa && \
+     chmod 600 /ansible/.ssh/id_rsa.pub && \
+     chown -R ansible.ansible /ansible/.ssh/*
 
 # Authorize SSH Host
 RUN cat /home/ansible/.ssh/id_rsa.pub > /ansible/.ssh/known_hosts
 
 
-RUN sudo service ssh start
+RUN  service ssh start
 
 EXPOSE 22
