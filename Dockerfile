@@ -12,13 +12,12 @@ RUN mkdir -p /home/ansible/.ssh && \
 # Add the keys and set permissions
 ADD ./keys/id_rsa /home/ansible/.ssh/id_rsa
 ADD ./keys/id_rsa.pub /home/ansible/.ssh/id_rsa.pub
-RUN ls -al /home/ansible/.ssh/
 RUN  chmod 600 /home/ansible/.ssh/id_rsa && \
      chmod 600 /home/ansible/.ssh/id_rsa.pub 
 
 
 # Authorize SSH Host
-RUN cat /home/ansible/.ssh/id_rsa.pub > /home/ansible/.ssh/known_hosts
+COPY /home/ansible/.ssh/id_rsa.pub /home/ansible/.ssh/authorized_keys
 
 RUN chown -R ansible:ansible /home/ansible/ && \
   echo "ansible ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
