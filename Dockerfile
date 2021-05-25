@@ -4,7 +4,8 @@ RUN groupmod -g 71000 ansible
 
 RUN apt-get update && \
     apt-get install -y \
-        openssh-server
+        openssh-server \
+        sudo
 
 COPY ssh_config /home/ansible/.ssh/config
 RUN mkdir -p /home/ansible/.ssh && \
