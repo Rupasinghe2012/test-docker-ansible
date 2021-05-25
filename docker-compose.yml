@@ -2,12 +2,14 @@ version: "3.9"
 services:
   alpha:
     build: .
+    container_name: alpha
     hostname: alpha
     networks:
         conti-test:
           ipv4_address: 172.16.100.140
   bravo:
     build: .
+    container_name: bravo
     hostname: bravo
     networks:
         conti-test:
@@ -21,6 +23,7 @@ services:
         - alpha
   charlie:
     build: .
+    container_name: charlie
     hostname: charlie
     environment:
       - CONTI_ENV=$${CONTI_ENV:-default}
