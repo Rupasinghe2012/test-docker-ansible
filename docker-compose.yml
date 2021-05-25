@@ -25,7 +25,6 @@ services:
   charlie:
     image: "conti-test"
     hostname: charlie
-    env_file: .env
     environment:
       - ${CONTI_ENV-default}
       - ${CONTI_DB_NAME?You must specify CONTI_DB_NAME in the environment}
