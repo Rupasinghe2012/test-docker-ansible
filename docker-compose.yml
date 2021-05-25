@@ -26,7 +26,7 @@ services:
     image: "conti-test"
     hostname: charlie
     environment:
-      - ${CONTI_ENV-default}
+      - ${CONTI_ENV:-default}
       - ${CONTI_DB_NAME?You must specify CONTI_DB_NAME in the environment}
     ulimits:
         nofile:
