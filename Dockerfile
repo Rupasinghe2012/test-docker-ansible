@@ -17,7 +17,7 @@ RUN  chmod 600 /home/ansible/.ssh/id_rsa && \
 
 
 # Authorize SSH Host
-COPY /home/ansible/.ssh/id_rsa.pub /home/ansible/.ssh/authorized_keys
+COPY ./keys/id_rsa.pub /home/ansible/.ssh/authorized_keys
 
 RUN chown -R ansible:ansible /home/ansible/ && \
   echo "ansible ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
