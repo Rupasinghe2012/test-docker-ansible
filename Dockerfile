@@ -13,7 +13,7 @@ ADD ./keys/id_rsa /home/ansible/.ssh/id_rsa
 ADD ./keys/id_rsa.pub /home/ansible/.ssh/id_rsa.pub
 RUN ls -al /home/ansible/.ssh/
 RUN  chmod 600 /home/ansible/.ssh/id_rsa && \
-     chmod 600 /home/ansible/.ssh/id_rsa.pub && \
+     chmod 600 /home/ansible/.ssh/id_rsa.pub 
 
 
 # Authorize SSH Host
