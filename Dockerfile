@@ -7,7 +7,7 @@ RUN apt-get update && \
         openssh-server
 USER ansible
 RUN mkdir -p /home/ansible/.ssh && \
-    chmod 0700 /home/ansible/.ssh && 
+    chmod 0700 /home/ansible/.ssh
 # Add the keys and set permissions
 ADD ./keys/id_rsa /home/ansible/.ssh/id_rsa
 ADD ./keys/id_rsa.pub /home/ansible/.ssh/id_rsa.pub
