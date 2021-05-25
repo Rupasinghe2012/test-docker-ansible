@@ -23,3 +23,5 @@ RUN cat /home/ansible/.ssh/id_rsa.pub > /home/ansible/.ssh/known_hosts
 RUN  service ssh start
 
 EXPOSE 22
+
+CMD ["/sbin/init"]
