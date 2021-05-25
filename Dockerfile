@@ -20,5 +20,5 @@ RUN  chmod 600 /home/ansible/.ssh/id_rsa && \
 RUN cat /home/ansible/.ssh/id_rsa.pub > /home/ansible/.ssh/known_hosts
 
 EXPOSE 22
-ENTRYPOINT ["service ssh start", "-b"]
+ENTRYPOINT service ssh start
 CMD ["/sbin/init"]
