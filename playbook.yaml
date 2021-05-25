@@ -4,11 +4,13 @@
   tasks:
     - name: Add the Apt Mirror Repo
       apt_repository:
-          repo: deb {{ hostvars[groups][global][1].apt_mirror }}
+          repo: deb {{ hostvars[item].apt_mirror }}
           state: present
+      loop: "{{ groups.global }}"
     - name: Set timezone
       timezone:
-        name: "{{ hostvars[groups][global][1].timezone }}"
+        name: "{{ hostvars[item].timezone }}"
+      loop: "{{ groups.global }}"
 - hosts: west
   become: true
   tasks:
